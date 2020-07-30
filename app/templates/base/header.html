@@ -1,0 +1,112 @@
+<header id="header" class="navbar-wrapper" style="background: currentColor;  top: 45px;">
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="navbar navbar-default">
+                <div class="menu-wrap">
+                    <div class="navbar-header">
+                        <div class="navbar-brand">
+                            <h1>
+                                <a href="/">
+                                    <img src="{{ url_for('static', filename='images/libraria-logo-v3.png') }}"
+                                         alt="LIBRARIA"/>
+                                </a>
+                            </h1>
+                        </div>
+                    </div>
+                    <!-- Navigation -->
+                    <div class="navbar-collapse hidden-sm hidden-xs">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="{{ url_for('index') }}">Home</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('books') }}">Books</a>
+                            </li>
+                            <li><a href="{{ url_for('services') }}">Services</a></li>
+                            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                        </ul>
+                        <!-- Header Topbar -->
+                        <div class="header-topbar hidden-md">
+                            <div class="topbar-links">
+                                <a href="{{ url_for('login') }}"><i class="fa fa-lock"></i>Login / Register</a>
+                                <span>|</span>
+                                <div class="header-cart dropdown">
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <small>0</small>
+                                    </a>
+                                    <div class="dropdown-menu cart-dropdown">
+                                        <ul>
+                                            <li class="clearfix">
+                                                <img src="{{ url_for('static', filename='images/header-cart-image-01.jpg') }}"
+                                                     alt="cart item"/>
+                                                <div class="item-info">
+                                                    <div class="name">
+                                                        <a href="#">The Great Gatsby</a>
+                                                    </div>
+                                                    <div class="author"><strong>Author:</strong> F. Scott Fitzgerald
+                                                    </div>
+                                                    <div class="price">1 X $10.00</div>
+                                                </div>
+                                                <a class="remove" href="#"><i class="fa fa-trash-o"></i></a>
+                                            </li>
+                                            <li class="clearfix">
+                                                <img src="{{ url_for('static', filename='images/header-cart-image-02.jpg') }}"
+                                                     alt="cart item"/>
+                                                <div class="item-info">
+                                                    <div class="name">
+                                                        <a href="#">The Great Gatsby</a>
+                                                    </div>
+                                                    <div class="author"><strong>Author:</strong> F. Scott Fitzgerald
+                                                    </div>
+                                                    <div class="price">1 X $10.00</div>
+                                                </div>
+                                                <a class="remove" href="#"><i class="fa fa-trash-o"></i></a>
+                                            </li>
+                                            <li class="clearfix">
+                                                <img src="{{ url_for('static', filename='images/header-cart-image-03.jpg') }}"
+                                                     alt="cart item"/>
+                                                <div class="item-info">
+                                                    <div class="name">
+                                                        <a href="#">The Great Gatsby</a>
+                                                    </div>
+                                                    <div class="author"><strong>Author:</strong> F. Scott Fitzgerald
+                                                    </div>
+                                                    <div class="price">1 X $10.00</div>
+                                                </div>
+                                                <a class="remove" href="#"><i class="fa fa-trash-o"></i></a>
+                                            </li>
+                                        </ul>
+                                        <div class="cart-total">
+                                            <div class="title">SubTotal</div>
+                                            <div class="price">$30.00</div>
+                                        </div>
+                                        <div class="cart-buttons">
+                                            <a href="{{ url_for('cart') }}" class="btn btn-dark-gray">View Cart</a>
+                                            <a href="{{ url_for('checkout') }}" class="btn btn-primary">Checkout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Header Topbar -->
+                    </div>
+                    <div class="mobile-menu hidden-md hidden-lg">
+                        <a href="#mobile-menu"><i class="fa fa-navicon"></i></a>
+                        <div id="mobile-menu">
+                            <ul class="mm-list mm-panel mm-opened mm-current" id="mm-m0-p0">
+                                <li>
+                                    <a href="{{ url_for('index') }}">Home</a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="{{ url_for('books') }}">Books</a>
+                                </li>
+                                <li><a href="{{ url_for('services') }}">Services</a></li>
+                                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+            </nav>
+        </div>
+    </div>
+</header>
