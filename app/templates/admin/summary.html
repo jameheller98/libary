@@ -1,0 +1,117 @@
+{% extends "admin/master.html" %}
+
+{% block body %}
+    <div class="container">
+        <section class="row">
+            <h1>Báo cáo thống kê tình hình mượn sách theo thể loại</h1>
+            <p>
+            <form class="form">
+                <label for="thang">Tháng:</label>
+                <select name="thang">
+                    <option value="1" {% if session['thang'] == '1' %}selected{% endif %}>1</option>
+                    <option value="2" {% if session['thang'] == '2' %}selected{% endif %}>2</option>
+                    <option value="3" {% if session['thang'] == '3' %}selected{% endif %}>3</option>
+                    <option value="4" {% if session['thang'] == '4' %}selected{% endif %}>4</option>
+                    <option value="5" {% if session['thang'] == '5' %}selected{% endif %}>5</option>
+                    <option value="6" {% if session['thang'] == '6' %}selected{% endif %}>6</option>
+                    <option value="7" {% if session['thang'] == '7' %}selected{% endif %}>7</option>
+                    <option value="8" {% if session['thang'] == '8' %}selected{% endif %}>8</option>
+                    <option value="9" {% if session['thang'] == '9' %}selected{% endif %}>9</option>
+                    <option value="10" {% if session['thang'] == '10' %}selected{% endif %}>10</option>
+                    <option value="11" {% if session['thang'] == '11' %}selected{% endif %}>11</option>
+                    <option value="12" {% if session['thang'] == '12' %}selected{% endif %}>12</option>
+                </select>
+                <input class="btn btn-danger" type="submit"/>
+            </form>
+            </p>
+            <h2>Tháng: {{ session['thang'] }}</h2>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <td>STT</td>
+                    <td>Tên thể loại</td>
+                    <td>Số lượt mượn</td>
+                    <td>Tỉ lệ</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>A</td>
+                    <td>
+                        {{ theLoaiA }}
+                    </td>
+                    <td>{% if theLoaiA != 0 %}
+                        {{ (theLoaiA * 100 / (theLoaiA + theLoaiB + theLoaiC))|round }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>B</td>
+                    <td>{{ theLoaiB }}</td>
+                    <td>{% if theLoaiB != 0 %}
+                        {{ (theLoaiB * 100 / (theLoaiA + theLoaiB + theLoaiC))|round }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>C</td>
+                    <td>{{ theLoaiC }}</td>
+                    <td>{% if theLoaiC != 0 %}
+                        {{ (theLoaiC * 100 / (theLoaiA + theLoaiB + theLoaiC))|round }}{% endif %}</td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="text-right">Tổng số lượt mượn: {{ theLoaiA + theLoaiB + theLoaiC }}</p>
+        </section>
+        <section class="row">
+            <h1>Báo cáo thống kê sách trả trễ</h1>
+            <p>
+                <b>Ngày:</b> {{ date }}
+            </p>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <td>STT</td>
+                    <td>Tên sách</td>
+                    <td>Ngày mượn</td>
+                    <td>Số ngày trả trễ</td>
+                </tr>
+                </thead>
+                <tbody>
+                {% for tt in traTre %}
+                    <tr>
+                        <td>{{ loop.index0 + 1 }}</td>
+                        <td>{{ tt.phieumuonsach.thongtinsach.tenSach }}</td>
+                        <td>{{ tt.phieumuonsach.ngayMuon }}</td>
+                        <td>{{ (tt.ngayTra - tt.phieumuonsach.ngayMuon).days }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </section>
+        <section class="row">
+            <h1>Báo cáo thống kê độc giả nợ tiền phạt</h1>
+            <p>
+                <b>Ngày:</b> {{ date }}
+            </p>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <td>STT</td>
+                    <td>Tên độc giả</td>
+                    <td>Tiền nợ</td>
+                </tr>
+                </thead>
+                <tbody>
+                {% for dg in docGia %}
+                    <tr>
+                        <td>{{ loop.index0 + 1 }}</td>
+                        <td>{{ dg.hoVaTen }}</td>
+                        <td>{{ dg.tongNo }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <p class="text-right">Tổng tiền nợ: ..................</p>
+        </section>
+    </div>
+{% endblock %}

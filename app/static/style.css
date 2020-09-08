@@ -16996,8 +16996,12 @@ a:focus {
     margin-bottom: 20px;
   }
 }
+.booksmedia-fullwidth {
+  margin-bottom: 100px;
+}
+
 .booksmedia-fullwidth img {
-  width: 100%;
+  width: 100%
 }
 .booksmedia-fullwidth ul {
   list-style: none;

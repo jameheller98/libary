@@ -1,0 +1,72 @@
+{% extends "admin/master.html" %}
+
+{% block body %}
+    <section class="container">
+        <form class="form">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <label class="col-form-label">Tìm tên sách:</label>
+                        <input type="text" name="tenSach" class="form-control">
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <label class="col-form-label">Tìm thể loại:</label>
+                        <select name="theLoai" class="form-control">
+                            <option value="">None</option>
+                            {% for tl in theLoai %}
+                                <option value="{{ tl.value }}">{{ tl.value }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <label class="col-form-label">Tìm tác giả:</label>
+                        <input type="text" name="tacGia" class="form-control">
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <label class="col-form-label">Tìm tình trạng:</label>
+                        <select name="tinhTrang" class="form-control">
+                             <option value="">None</option>
+                            {% for tt in tinhTrang %}
+                                <option value="{{ tt.value }}">{{ tt.value }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-danger">
+            </div>
+        </form>
+        <table class="table">
+            <caption><h1>DANH SÁCH SÁCH</h1></caption>
+            <thead>
+            <tr class="table__tr">
+                <td class="table__td">STT</td>
+                <td class="table__td">Mã Sách</td>
+                <td class="table__td">Tên Sách</td>
+                <td class="table__td">Thể Loại</td>
+                <td class="table__td">Tác Giả</td>
+                <td class="table__td">Tình Trạng</td>
+            </tr>
+            </thead>
+            <tbody class="table__tobdy">
+            {% for b in books %}
+                <tr class="table__tr">
+                    <td class="table__td">{{ loop.index0 + 1 }}</td>
+                    <td class="table__td">{{ b.id }}</td>
+                    <td class="table__td">{{ b.tenSach }}</td>
+                    <td class="table__td">{{ b.theLoai.value }}</td>
+                    <td class="table__td">{{ b.tacGia }}</td>
+                    <td class="table__td">{{ b.tinhTrangSach.value }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+{% endblock %}
